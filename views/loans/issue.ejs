@@ -1,0 +1,64 @@
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Issue Book</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <a href="/loans" class="btn btn-sm btn-outline-secondary">
+      <i class="fas fa-arrow-left"></i> Back to Loans
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <form action="/loans/issue" method="POST">
+          <div class="mb-3">
+            <label for="bookId" class="form-label">Book</label>
+            <select class="form-select" id="bookId" name="bookId" required>
+              <option value="" disabled selected>Select Book</option>
+              <% if(books.length > 0) { %>
+                <% books.forEach(function(book) { %>
+                  <option value="<%= book._id %>" <%= typeof formData !== 'undefined' && formData.bookId === book._id.toString() ? 'selected' : '' %>>
+                    <%= book.title %> by <%= book.author %> (<%= book.availableQuantity %> available)
+                  </option>
+                <% }); %>
+              <% } %>
+            </select>
+          </div>
+          
+          <div class="mb-3">
+            <label for="studentId" class="form-label">Student</label>
+            <select class="form-select" id="studentId" name="studentId" required>
+              <option value="" disabled selected>Select Student</option>
+              <% if(students.length > 0) { %>
+                <% students.forEach(function(student) { %>
+                  <option value="<%= student._id %>" <%= typeof formData !== 'undefined' && formData.studentId === student._id.toString() ? 'selected' : '' %>>
+                    <%= student.name %> (<%= student.studentId %>)
+                  </option>
+                <% }); %>
+              <% } %>
+            </select>
+          </div>
+          
+          <div class="mb-3">
+            <label for="dueDate" class="form-label">Due Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dueDate"
+              name="dueDate"
+              min="<%= new Date().toISOString().split('T')[0] %>"
+              value="<%= typeof formData !== 'undefined' ? formData.dueDate : '' %>"
+              required
+            >
+          </div>
+          
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Issue Book</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

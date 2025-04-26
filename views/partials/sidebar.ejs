@@ -1,0 +1,37 @@
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+    <div class="position-sticky pt-3">
+      <div class="text-center mb-4">
+        <h3 class="text-white">Library System</h3>
+        <p class="text-light">Welcome, <%= user.name %></p>
+      </div>
+  
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/dashboard">
+            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/books">
+            <i class="fas fa-book me-2"></i> Books
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/students">
+            <i class="fas fa-user-graduate me-2"></i> Students
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/loans">
+            <i class="fas fa-exchange-alt me-2"></i> Loans
+          </a>
+        </li>
+        <li class="nav-item mt-5">
+          <a class="nav-link text-white" href="/auth/logout">
+            <i class="fas fa-sign-out-alt me-2"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  

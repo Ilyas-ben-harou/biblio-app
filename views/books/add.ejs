@@ -1,0 +1,112 @@
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Add New Book</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <a href="/books" class="btn btn-sm btn-outline-secondary">
+      <i class="fas fa-arrow-left"></i> Back to Books
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <form action="/books/add" method="POST">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              value="<%= typeof book !== 'undefined' ? book.title : '' %>"
+              required
+            >
+          </div>
+          
+          <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input
+              type="text"
+              class="form-control"
+              id="author"
+              name="author"
+              value="<%= typeof book !== 'undefined' ? book.author : '' %>"
+              required
+            >
+          </div>
+          
+          <div class="mb-3">
+            <label for="isbn" class="form-label">ISBN</label>
+            <input
+              type="text"
+              class="form-control"
+              id="isbn"
+              name="isbn"
+              value="<%= typeof book !== 'undefined' ? book.isbn : '' %>"
+              required
+            >
+          </div>
+          
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" id="category" name="category" required>
+              <option value="" disabled selected>Select Category</option>
+              <option value="Fiction" <%= typeof book !== 'undefined' && book.category === 'Fiction' ? 'selected' : '' %>>Fiction</option>
+              <option value="Non-Fiction" <%= typeof book !== 'undefined' && book.category === 'Non-Fiction' ? 'selected' : '' %>>Non-Fiction</option>
+              <option value="Science" <%= typeof book !== 'undefined' && book.category === 'Science' ? 'selected' : '' %>>Science</option>
+              <option value="Technology" <%= typeof book !== 'undefined' && book.category === 'Technology' ? 'selected' : '' %>>Technology</option>
+              <option value="History" <%= typeof book !== 'undefined' && book.category === 'History' ? 'selected' : '' %>>History</option>
+              <option value="Literature" <%= typeof book !== 'undefined' && book.category === 'Literature' ? 'selected' : '' %>>Literature</option>
+              <option value="Reference" <%= typeof book !== 'undefined' && book.category === 'Reference' ? 'selected' : '' %>>Reference</option>
+              <option value="Other" <%= typeof book !== 'undefined' && book.category === 'Other' ? 'selected' : '' %>>Other</option>
+            </select>
+          </div>
+          
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input
+              type="number"
+              class="form-control"
+              id="quantity"
+              name="quantity"
+              min="1"
+              value="<%= typeof book !== 'undefined' ? book.quantity : '1' %>"
+              required
+            >
+          </div>
+          
+          <div class="mb-3">
+            <label for="shelfLocation" class="form-label">Shelf Location</label>
+            <input
+              type="text"
+              class="form-control"
+              id="shelfLocation"
+              name="shelfLocation"
+              value="<%= typeof book !== 'undefined' ? book.shelfLocation : '' %>"
+              required
+            >
+          </div>
+          
+          <div class="mb-3">
+            <label for="publishedYear" class="form-label">Published Year</label>
+            <input
+              type="number"
+              class="form-control"
+              id="publishedYear"
+              name="publishedYear"
+              min="1800"
+              max="<%= new Date().getFullYear() %>"
+              value="<%= typeof book !== 'undefined' ? book.publishedYear : '' %>"
+            >
+          </div>
+          
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Add Book</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
